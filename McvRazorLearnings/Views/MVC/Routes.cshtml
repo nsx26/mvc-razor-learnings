@@ -1,0 +1,43 @@
+﻿@{
+}
+
+<h1 class="display-4">Routes</h1>
+<p>MVC stands for model, view, controller: where model is the view's model, view is the razor page, and controller is the controller.</p>
+<p>Controllers in Razor MVC are responsible for fetching a view for a given route and displaying data given naming conventions.</p>
+
+<h3>Example</h3>
+
+<strong>Controller:</strong>
+<p>Our controller name prefix is <code>MVC</code> and our action method name is <code>Routes</code>:</p>
+
+<pre class="code-block"><code>
+    public class <mark>MVCController</mark> : Controller
+    {
+        public IActionResult <mark>Routes()</mark>
+        {
+            return View();
+        }
+    }
+</code></pre>
+
+this information determines where we look for a razor view to display when we call <code>View()</code> in the action method.
+
+<br />
+<br />
+<strong>File Structure:</strong>
+<p>Our file structure is according to MVC conventions, with views organized by controller names and their action method names:</p>
+
+<pre class="code-block"><code>
+    RootProject/
+    ├── Controllers/
+    │   └── MVCController.cs
+    ├── Models/
+    └── Views/
+        └── MVC/
+            └── Routes.cshtml
+</code></pre>
+
+<p>Given the controller name prefix and action method name, we will look in <code>Views > MVC > Routes.cshtml</code> for our razor view when the MVCController Routes method is called.</p>
+
+<strong>Result:</strong>
+<p>The page you are viewing &#128522;</p>

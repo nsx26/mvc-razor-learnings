@@ -5,7 +5,7 @@
 <h1 class="display-4">@@model</h1>
 <p>Each Razor page has 1 model representing the data that page can access, declared at the top of the file as: <code>@@model Namespace.ModelName;</code></p>
 <p>it can be used in the HTML of the razor page using <code>@@Model.PropertyName</code></p>
-<p>or in C# if the razor page using <code>Model.PropertyName</code></p>
+<p>or in C# of the razor page using <code>Model.PropertyName</code></p>
 
 <h3>Example</h3>
 <strong>Our Model:</strong>
@@ -32,7 +32,9 @@
 </code></pre>
 
 <strong>Result:</strong>
-@if (Model.PropertyName != null)
-{
-    <p>The basic property is: @Model.PropertyName</p>
-}
+<div class="result">
+    @if (Model.PropertyName != null)
+    {
+        <p>The basic property is: @Model.PropertyName</p>
+    }
+</div>

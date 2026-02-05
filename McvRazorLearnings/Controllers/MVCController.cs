@@ -1,23 +1,12 @@
 using McvRazorLearnings.Models;
 using Microsoft.AspNetCore.Mvc;
-using MvcRazorLearnings.Models;
 using System.Diagnostics;
 
 namespace MvcRazorLearnings.Controllers;
 
-public class RazorController : Controller
+public class MVCController : Controller
 {
-    public IActionResult Models()
-    {
-        return View(new BasicModel());
-    }
-
-    public IActionResult AtCSharpBlock()
-    {
-        return View();
-    }
-
-    public IActionResult ControlFlow()
+    public IActionResult Routes()
     {
         return View();
     }
