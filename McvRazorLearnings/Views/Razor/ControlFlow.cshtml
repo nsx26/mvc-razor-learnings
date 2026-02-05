@@ -1,0 +1,27 @@
+﻿@model MvcRazorLearnings.Models.BasicModel;
+@{
+}
+
+<h1 class="display-4">Control Flow</h1>
+<p>Razor pages control flow syntax supports C# code in control-flow using <code>@@if</code> and <code>@@foreach</code></p>
+
+<h3>Example</h3>
+<pre class="code-block"><code>
+    @@if(true) {
+        &lt;ul&gt;
+            @@foreach(var item in new[] { "one", "two", "three" }) {
+                &lt;li&gt;Item: @@item&lt;/li&gt;
+            }
+        &lt;ul&gt;
+    }
+</code></pre>
+
+
+<strong>Result:</strong>
+@if(true) {
+    <ul>
+        @foreach(var item in new[] { "one", "two", "three" }) {
+            <li>Item: @item</li>
+        }
+    </ul>
+}
