@@ -1,0 +1,65 @@
+﻿@model MvcRazorLearnings.Models.BasicModel;
+@{
+    ViewData["Message"] = "Using View Data Example!";
+
+    var message = "Using C# Variable Example!";
+
+    var computedMessage = () =>
+    {
+        return "A function computed this message!";
+    };
+}
+
+<h1 class="display-4">@@{}</h1>
+<p>Each Razor page starts with a section for C# code like this <code>@@{ }</code></p>
+<p>It can be used for any C#, and below are three ways to define/access values to use in the razor page.</p>
+
+<h3>ViewData</h3>
+<pre class="code-block"><code>
+    @@ {
+        // Setting view data
+        <mark>ViewData["Message"] = "Using View Data Example!";</mark>
+
+        // Note, ViewData can be set in the constructor and accessed via ViewData["PropertyName"]
+    }
+
+    ...
+
+    &lt;p&gt;Message from ViewData: <mark>@@ViewData["Message"]</mark>&lt;/p&gt;
+</code></pre>
+
+<strong>Result:</strong>
+<p>Message from ViewData: @ViewData["Message"]</p>
+
+<h3>C# Variable</h3>
+<pre class="code-block"><code>
+    @@ {
+        // Setting a C# variable
+        <mark>var message = "Using C# Variable Example!";</mark>
+    }
+
+    ...
+
+    &lt;p&gt;Message from C# Variable: <mark>@@message</mark>&lt;/p&gt;
+</code></pre>
+
+<strong>Result:</strong>
+<p>Message from C# Variable: @message</p>
+
+<h3>Computed Value</h3>
+<pre class="code-block"><code>
+    @@ {
+        // Setting a computed value
+        <mark>var computedMessage = () =>
+        {
+            return "A function computed this message!";
+        };</mark>
+    }
+
+    ...
+
+    &lt;p&gt;Message from Computed Value: <mark>@@computedMessage()</mark>&lt;/p&gt;
+</code></pre>
+
+<strong>Result:</strong>
+<p>Message from Computed Value: @computedMessage()</p>

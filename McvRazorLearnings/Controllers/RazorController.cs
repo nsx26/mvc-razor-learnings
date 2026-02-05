@@ -12,6 +12,11 @@ namespace McvRazorLearnings.Controllers
             return View(new BasicModel());
         }
 
+        public IActionResult AtCSharpBlock()
+        {
+            return View(new BasicModel());
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
