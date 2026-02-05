@@ -1,0 +1,33 @@
+﻿@{
+}
+
+<h1 class="display-4">Layout</h1>
+<p>There is a <code>_Layout.cshtml</code> file inside <code>Views > Shared</code> that is used to share code accross pages, such as the navigation in this app.</p>
+
+<h3>Structure</h3>
+<p>The general structure for <code>_Layout.cshtml</code> is:</p>
+
+<pre class="code-block"><code>
+    &lt;head&gt;...&lt;/head&gt;
+    &lt;body&gt;
+        <mark>&lt;header&gt;...&lt;/header&gt;</mark>
+
+        &lt;div class="container"&gt;
+            &lt;main role="main" class="pb-3"&gt;
+                <mark>@@RenderBody()</mark>
+            &lt;/main&gt;
+         &lt;/div&gt;
+
+        &lt;footer&gt;...&lt;/footer&gt;
+
+        @@await RenderSectionAsync("Scripts", required: false)
+    &lt;/body&gt;
+</code></pre>
+
+<p>The <code>&lt;header&gt;...&lt;/header&gt;</code> code is responsible for this app header.</p>
+
+<p>The <code>@@RenderBody()</code> is where the content of the individual razor pages will be inserted when they are rendered.</p>
+
+<p>The <code>&lt;footer&gt;...&lt;/footer&gt;</code> code is responsible for this app footer (the copywrite).</p>
+
+<p>And the <code>@@await RenderSectionAsync("Scripts", required: false)</code> allows other pages to execute scripts as needed.</p>

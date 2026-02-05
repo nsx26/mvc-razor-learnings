@@ -11,6 +11,11 @@ public class MVCController : Controller
         return View();
     }
 
+    public IActionResult Layout()
+    {
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
