@@ -1,0 +1,24 @@
+@model MvcRazorLearnings.Models.FormInputModel
+
+@{
+}
+
+<h2>Forms</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label for="InputText" class="form-label">Enter Text:</label>
+        <input type="text" class="form-control" id="InputText" name="InputText" value="@Model.InputText" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Result))
+{
+    <div class="mt-4">
+        <h4>You entered:</h4>
+        <div class="alert alert-success">
+           @Model.Result
+        </div>
+    </div>
+}
