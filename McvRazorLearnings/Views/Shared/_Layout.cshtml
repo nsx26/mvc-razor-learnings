@@ -38,6 +38,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="MVC" asp-action="Layout">Layout</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MVC" asp-action="Header">Header</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MVC" asp-action="RenderSection">Render Section</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -54,6 +60,9 @@
             &copy; 2026 - McvRazorLearnings
         </div>
     </footer>
+
+    @RenderSection("RenderSectionExample", required: false)
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,0 +1,27 @@
+﻿@{
+}
+
+<h1 class="display-4">The Header</h1>
+<p>The header code block is just regular html and css with links to the pages in this app.</p>
+
+<p>The links use tag helpers called <code>asp-controller</code> and <code>asp-action</code> to create the link of the anchor tag.</p>
+
+<h3>Example</h3>
+<pre class="code-block"><code>
+    &lt;header&gt;
+        &lt;nav class="..."&gt;
+        ...
+            &lt;ul class="navbar-nav flex-grow-1"&gt;
+               ...
+                &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link text-dark" <mark>asp-controller="MVC" asp-action="Header"</mark>&gt;Header&lt;/a&gt;
+                &lt;/li&gt;
+                ...
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+</code></pre>
+
+<p>Just like in the <a asp-area="" asp-controller="MVC" asp-action="Routes">MVC Routing Example</a>, the controller and action names are used to determine which page to link to. This example will link to <code>[base-url]/MVC/Header</code>, as you can see in the url of this page.</p>
+
+<p>Other tag helpers exist for things like forms and more complex navigation.</p>
