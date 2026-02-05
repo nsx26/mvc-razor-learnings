@@ -31,3 +31,25 @@
 <p>The <code>&lt;footer&gt;...&lt;/footer&gt;</code> code is responsible for this app footer (the copywrite).</p>
 
 <p>And the <code>@@await RenderSectionAsync("Scripts", required: false)</code> allows other pages to execute scripts as needed.</p>
+
+<h3>The Header</h3>
+<p>The header code block is just regular html and css with links to the pages in this app.</p>
+
+<p>The links use tag helpers called <code>asp-controller</code> and <code>asp-action</code> to create the link of the anchor tag.</p>
+
+<pre class="code-block"><code>
+    &lt;header&gt;
+        &lt;nav class="..."&gt;
+        ...
+            &lt;ul class="navbar-nav flex-grow-1"&gt;
+               ...
+                &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link text-dark" <mark>asp-controller</mark>="MVC" <mark>asp-action</mark>="Layout"&gt;Layout&lt;/a&gt;
+                &lt;/li&gt;
+                ...
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+</code></pre>
+
+Just like in the <a asp-area="" asp-controller="MVC" asp-action="Routes">MVC Routing Example</a>, the controller and action names are used to determine which page to link to.
