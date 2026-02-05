@@ -4,21 +4,29 @@
 }
 
 <h2>Forms</h2>
+@* TODO: explain this *@
 
-<form method="post">
-    <div class="mb-3">
-        <label for="InputText" class="form-label">Enter Text:</label>
-        <input type="text" class="form-control" id="InputText" name="InputText" value="@Model.InputText" />
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-@if (!string.IsNullOrEmpty(Model.Result))
-{
-    <div class="mt-4">
-        <h4>You entered:</h4>
-        <div class="alert alert-success">
-           @Model.Result
+<strong>Result:</strong>
+<div class="result">
+    <form method="post">
+        <div class="mb-3">
+            <label for="InputText" class="form-label">Enter Text:</label>
+            <input type="text" class="form-control" id="InputText" name="InputText" value="@Model.InputText" />
         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="mt-4">
+        <h4>You Entered:</h4>
+        @if (!string.IsNullOrEmpty(Model.Result))
+        {
+            <div class="alert alert-success">
+                @Model.Result
+            </div>
+        }
+        else
+        {
+            <p style="padding-top: 10px; font-style: italic;">Nothing yet...</p>
+        }
     </div>
-}
+</div>
