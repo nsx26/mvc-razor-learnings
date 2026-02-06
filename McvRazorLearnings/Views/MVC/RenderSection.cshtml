@@ -5,7 +5,7 @@
 <p>RenderSection can be used to display specific code from a view at a different place in the layout than the <code>RenderBody</code> section.</p>
 
 <h3>Example</h3>
-<p>We can modify <code>_Layout.cshtml</code> to include a new section called <code>RenderSectionExample</code>.</p>
+<p>We can modify <code>_Layout.cshtml</code> to include a new section called <code>RenderSectionExample</code>:</p>
 
 <pre class="code-block"><code>
     &lt;head&gt;...&lt;/head&gt;
@@ -23,7 +23,7 @@
 
 <p>The first parameter is the name of the section: "RenderSectionExample", and the second is whether or not all views are required to have that section defined in their cshtml template.</p>
 
-<p>In a razor page view, we can add the section using its name and <code>{ }</code> to define what should be shown in that section.</p>
+<p>In a razor page view, we can add the section using its name and <code>{ }</code> to define what should be shown in that section:</p>
 
 <pre class="code-block"><code>
     @@section RenderSectionExample {
