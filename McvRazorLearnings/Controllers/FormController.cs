@@ -11,12 +11,13 @@ public class FormController : Controller
     }
 
     [HttpPost]
-    public IActionResult Index(FormInputModel model)
+    public IActionResult Submit(FormInputModel model)
     {
         if (!string.IsNullOrEmpty(model.InputText))
         {
             model.Result = model.InputText;
         }
-        return View(model);
+
+        return View("Index", model);
     }
 }

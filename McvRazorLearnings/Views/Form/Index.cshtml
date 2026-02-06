@@ -4,11 +4,90 @@
 }
 
 <h2>Forms</h2>
-@* TODO: explain this *@
+<p>Forms are one way to allow data to be posted from a razor page.</p>
+
+<h3>Example</h3>
+<p>In this example we will create a form to collect data, a model to save that data to, and a controller to recieve that data and update the view.</p>
+
+<p>Here is our FormInput model contianing <code>InputText</code> and a <code>Result</code>:</p>
+<pre class="code-block"><code>
+    public class FormInputModel
+    {
+        public string InputText { get; set; } = string.Empty;
+        public string Result { get; set; } = string.Empty;
+    }
+</code></pre>
+
+<p>We can create a POST method in our constructor that accepts this form model.</p>
+<pre class="code-block"><code>
+    [HttpPost]
+    public IActionResult Submit(FormInputModel model)
+    {
+        if (!string.IsNullOrEmpty(model.InputText))
+        {
+            model.Result = model.InputText;
+        }
+
+        return View("Index", model);
+    }
+</code></pre>
+
+<p>The action method is named <code>Submit</code> and is decorated with <code>[HttpPost]</code>.</p>
+
+<p>We could register a service for this controller and use it to save data to a database or otherwise perform logic - as in any Web API. In this example, we simply set the <code>Result</code> value of the FormInputModel based on the <code>InputText</code> we recieve in the method.</p>
+
+<p>Finally, we return the View we want to display. This page is called "Index", but our method name is <code>Submit</code>, so we must pass our View name as a paramter when we call <code>View()</code>. We also pass our updated data into the View.</p>
+
+<p>The result should be an updated version of this page that displays the input after submitting the form.</p>
+
+<strong>The Form</strong>
+<pre class="code-block"><code>
+    &lt;form <mark>method="post" asp-action="Submit"</mark>&gt;
+        &lt;div class="mb-3"&gt;
+            &lt;label for="InputText" class="form-label"&gt;Enter Text:&lt;/label&gt;
+            &lt;input type="text" class="form-control" id="InputText" <mark>name="InputText"</mark> value="@@Model.InputText" /&gt;
+        &lt;/div&gt;
+        &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+</code></pre>
+
+<p>This form has a method of "post" which means it will send a POST request when submitted. It will send the request to the same URL the page is displayed at, unless otherwise specified using the <code>asp-controller</code> and <code>asp-action</code> tag helpers - just like links. </p>
+
+<p>In this case, the controller name is the same as the page's controller ("Form"), but the method name is "Submit" instead of "Index", so we specify the method name using <code>asp-action</code>. Therefore, this form will be submitted to <code>POST [base-url]/Form/Submit</code>.</p>
+
+<p>The input element has a property called <code>name</code> with a value of "InputText". This tells ASP.NET Core to find the matching property on the page's model, in this case, FormInputModel. A new FormInputModel is created automatically and populated with the input value for the <code>InputText</code> property.</p>
+
+<p>The submit button is of type "submit"", and the form has a method of "post". This means that when the submit button is pressed, ASP.Net Core creates the model, populates the InputText property, and sends that data to the route defined on the form. This hits our Submit endpoint in the controller which updates its data and refreshes the page.</p>
+
+<strong>Result Code</strong>
+<p>Only the form was shown above, so here is the full code used to create the result area below:</p>
+<pre class="code-block"><code>
+    &lt;form method="post" asp-action="Submit"&gt;
+        &lt;div class="mb-3"&gt;
+            &lt;label for="InputText" class="form-label"&gt;Enter Text:&lt;/label&gt;
+            &lt;input type="text" class="form-control" id="InputText" name="InputText" value="@@Model.InputText" /&gt;
+         &lt;/div&gt;
+        &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;div class="mt-4"&gt;
+        &lt;h4&gt;You Entered:&lt;/h4&gt;
+        @@if (!string.IsNullOrEmpty(Model.Result))
+        {
+            &lt;div class="alert alert-success"&gt;
+                @@Model.Result
+            &lt;/div&gt;
+        }
+        else
+        {
+            &lt;p style="padding-top: 10px; font-style: italic;"&gt;Nothing yet...&lt;/p&gt;
+        }
+    &lt;/div&gt;
+</code></pre>
 
 <strong>Result:</strong>
 <div class="result">
-    <form method="post">
+    <form method="post" asp-action="Submit">
         <div class="mb-3">
             <label for="InputText" class="form-label">Enter Text:</label>
             <input type="text" class="form-control" id="InputText" name="InputText" value="@Model.InputText" />
